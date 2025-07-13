@@ -1,48 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Bangalore Home Price Prediction</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoHome | Bangalore Price Prediction</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script defer src="script.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <div class="grid-lines"></div>
+    <div class="pulse-circle"></div>
+    <div class="pulse-circle"></div>
+    
     <div class="container">
-        <h1>🏠 Bangalore Home Price Estimator</h1>
-
-        <label for="uiSqft">Area (Square Feet)</label>
-        <input type="text" id="uiSqft" name="Squareft" value="1000">
-
-        <label>BHK</label>
-        <div class="radio-group" id="bhk-group">
-            <input type="radio" id="radio-bhk-1" name="uiBHK" value="1">
-            <label for="radio-bhk-1">1</label>
-            <input type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked>
-            <label for="radio-bhk-2">2</label>
-            <input type="radio" id="radio-bhk-3" name="uiBHK" value="3">
-            <label for="radio-bhk-3">3</label>
+        <h1><i class="fas fa-home"></i> NEOHOME PRICE ESTIMATOR</h1>
+        
+        <div class="input-group">
+            <label for="uiSqft"><i class="fas fa-ruler-combined"></i> AREA (SQUARE FEET)</label>
+            <input type="text" id="uiSqft" name="Squareft" value="1000">
         </div>
-
-        <label>Bath</label>
-        <div class="radio-group" id="bath-group">
-            <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1">
-            <label for="radio-bath-1">1</label>
-            <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked>
-            <label for="radio-bath-2">2</label>
-            <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3">
-            <label for="radio-bath-3">3</label>
+        
+        <div class="input-group">
+            <label><i class="fas fa-bed"></i> BEDROOMS</label>
+            <div class="radio-container" id="bhk-group">
+                <div class="radio-option">
+                    <input type="radio" id="radio-bhk-1" name="uiBHK" value="1">
+                    <label for="radio-bhk-1"><i class="fas fa-1"></i> 1 BHK</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked>
+                    <label for="radio-bhk-2"><i class="fas fa-2"></i> 2 BHK</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="radio-bhk-3" name="uiBHK" value="3">
+                    <label for="radio-bhk-3"><i class="fas fa-3"></i> 3 BHK</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="radio-bhk-4" name="uiBHK" value="4">
+                    <label for="radio-bhk-4"><i class="fas fa-4"></i> 4 BHK</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="radio-bhk-5" name="uiBHK" value="5">
+                    <label for="radio-bhk-5"><i class="fas fa-5"></i> 5 BHK</label>
+                </div>
+            </div>
         </div>
-
-        <label for="uiLocations">Location</label>
-        <select id="uiLocations">
-            <option disabled selected>Loading locations...</option>
-        </select>
-
-        <button onclick="onClickedEstimatePrice()">Estimate Price</button>
-
-        <div id="uiEstimatedPrice"></div>
+        
+        <div class="input-group">
+            <label><i class="fas fa-bath"></i> BATHROOMS</label>
+            <div class="radio-container" id="bath-group">
+                <div class="radio-option">
+                    <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1">
+                    <label for="radio-bath-1"><i class="fas fa-1"></i> 1 Bath</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked>
+                    <label for="radio-bath-2"><i class="fas fa-2"></i> 2 Bath</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3">
+                    <label for="radio-bath-3"><i class="fas fa-3"></i> 3 Bath</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="radio-bath-4" name="uiBathrooms" value="4">
+                    <label for="radio-bath-4"><i class="fas fa-4"></i> 4 Bath</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="radio-bath-5" name="uiBathrooms" value="5">
+                    <label for="radio-bath-5"><i class="fas fa-5"></i> 5 Bath</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="input-group">
+            <label for="uiLocations"><i class="fas fa-map-marker-alt"></i> LOCATION</label>
+            <select id="uiLocations">
+                <option disabled selected>Loading locations...</option>
+            </select>
+        </div>
+        
+        <button id="estimateBtn">
+            <i class="fas fa-calculator"></i> ESTIMATE PRICE
+        </button>
+        
+        <div id="uiEstimatedPrice">
+            <div class="price-label">YOUR ESTIMATED PRICE</div>
+            <div class="price-display">--</div>
+            <div class="price-label">Move sliders to calculate</div>
+        </div>
+        
+        <div class="footer">
+            <p>Powered by AI Predictive Analytics | © 2023 NeoHome Systems</p>
+        </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
